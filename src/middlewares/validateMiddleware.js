@@ -1,12 +1,17 @@
-import AppError from '../errors/apiErorr.js'
+import AppError from '../errors/AppError.js'
 
 const validateMiddleware =
-    (schema) => {
+    (
+        schema,
+        property = 'body'
+    ) => {
 
         return (req, res, next) => {
 
-            const { error } =
-                schema.validate(req.body)
+            const { error, value } =
+                schema.validate(
+                    req[property]
+                )
 
             if (error) {
 
@@ -18,6 +23,8 @@ const validateMiddleware =
                     )
                 )
             }
+
+            req[property] = value
 
             next()
         }
