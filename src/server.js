@@ -42,8 +42,8 @@ app.get(
     })
 )
 
-app.use(errorMiddleware)
 app.use('/', mainRoute)
+app.use(errorMiddleware)
 
 const PORT = process.env.PORT || 3000
 
