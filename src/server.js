@@ -22,21 +22,13 @@ app.get(
     '/',
     asyncHandler(async (req, res) => {
 
-        const users = await pool.query(
-            'SELECT * FROM users'
-        )
-
-        if (!users.rows.length) {
-            throw new AppError(
-                'No users found',
-                404
-            )
-        }
-
         successResponse(
             res,
-            'Users fetched successfully',
-            users.rows
+            'New deployment working 🚀',
+            {
+                version: 'v2',
+                time: new Date()
+            }
         )
     })
 )

@@ -39,3 +39,27 @@ jobs:
 
       - name: Docker Push
         run: docker push ${{ secrets.DOCKER_USERNAME }}/ecommerce-backend:v1
+
+            - name: Deploy to AWS EC2
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.AWS_HOST }}
+        username: ${{ secrets.AWS_USERNAME }}
+        key: ${{ secrets.AWS_SSH_KEY }}
+        script: |
+          sudo docker pull zenil119/ecommerce-backend:v1
+
+          sudo docker stop ecommerce-backend || true
+          sudo docker rm ecommerce-backend || true
+
+          sudo docker run -d \
+            --network ecommerce-network \
+            -p 3000:3000 \
+            --name ecommerce-backend \
+            -e DB_USER=postgres \
+            -e DB_HOST=ecommerce-postgres \
+            -e DB_NAME=ecommerce_db \
+            -e DB_PASSWORD=lalacompany \
+            -e DB_PORT=5432 \
+            -e JWT_SECRET=supersecretkey \
+            zenil119/ecommerce-backend:v1
