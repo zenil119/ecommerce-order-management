@@ -3,12 +3,8 @@ import dotenv from 'dotenv'
 import mainRoute from './routes/index.js'
 
 
-import pool from './config/db.js'
-
 import asyncHandler from './utils/asyncHandler.js'
 import successResponse from './utils/successResponse.js'
-
-import AppError from './errors/apiErorr.js'
 
 import errorMiddleware from './middlewares/errorMiddleware.js'
 
