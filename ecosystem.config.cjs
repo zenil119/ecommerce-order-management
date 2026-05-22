@@ -1,7 +1,7 @@
 module.exports = {
     apps: [
         {
-            name: 'ecommerce-backend',
+            name: 'backend',
             script: './src/server.js',
             instances: 1,
             exec_mode: 'fork',
