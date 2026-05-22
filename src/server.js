@@ -1,7 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import mainRoute from './routes/index.js'
-import authMiddleware from './middlewares/authMiddleware.js'
 
 
 import pool from './config/db.js'

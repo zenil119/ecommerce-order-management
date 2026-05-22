@@ -1,8 +1,7 @@
 const errorMiddleware = (
     err,
     req,
-    res,
-    next
+    res
 ) => {
 
     err.statusCode = err.statusCode || 500

@@ -7,7 +7,6 @@ import {
     bulkCreateOrderItems,
     bulkUpdateProductStock,
     createOrder,
-    createOrderItem,
     getProductsByIds
 }
     from '../repositories/order.repository.js'
