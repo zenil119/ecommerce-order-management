@@ -17,7 +17,6 @@ app.use(express.json())
 app.get(
     '/',
     asyncHandler(async (req, res) => {
-
         successResponse(
             res,
             'New deployment working 🚀',
