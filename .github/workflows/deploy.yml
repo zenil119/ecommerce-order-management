@@ -41,6 +41,8 @@ jobs:
           username: ${{ secrets.AWS_USERNAME }}
           key: ${{ secrets.AWS_SSH_KEY }}
           script: |
+            sudo docker network create ecommerce-network || true
+
             sudo docker pull zenil119/ecommerce-backend:v1
 
             sudo docker stop ecommerce-backend || true
